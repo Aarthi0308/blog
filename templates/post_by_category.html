@@ -66,65 +66,29 @@
       {% endif %}
       {% endfor %}
 <!--Featured posts-->
-<h3 class="text-uppercase text-warning" style="letter-spacing: 2px;"> featured_posts</h3>
+<h3 class="text-uppercase text-warning" style="letter-spacing: 2px;">category - {{ category }}</h3>
       <div class="row mb-2">
-        {%for post in featured_posts %}
-        {% if not forloop.first %}
+        {% if posts %}
+        {%for post in posts %}
         <div class="col-md-6">
           <div class="card border-0">
             <div class="card-body">
               <h3>{{ post.title }}</h3>
               <small class="mb-1 text-muted">{{post.created_at | timesince}}ago|{{post.author }}</small>
               <p class="card-text">
-                {{ post.short_description | truncatewords:10}}
+                {{ post.short_description | truncatewords:20}}
               </p>
             </div>
           </div>
         </div>
-        {%endif %}
         {% endfor %}
+        {% else %}
+        <p> no post found </p>
+        {% endif %}
       </div>
 <!--Recent posts-->
-<h3 class="text-uppercase text-warning" style="letter-spacing: 2px;">Recent post</h3>
-      <main role="main" class="container p-0">
-        <div class="row">
-          <div class="col-md-8 blog-main">
-            {% for post in posts %}
-            <div class="card border-0">
-            <div class="card-body">
-              <h3>{{ post.title }}</h3>
-              <small class="mb-1 text-muted">{{post.created_at | timesince}}ago|{{post.author }}</small>
-              <p class="card-text">
-                {{ post.short_description | truncatewords:25}}
-              </p>
-            </div>
-            {% endfor %}
-          </div>
-            
-           
-          </div>
-          <!-- /.blog-main -->
 
-          <aside class="col-md-4 blog-sidebar">
-            <div class="p-3 mb-3 bg-light rounded">
-              <h4 class="font-italic">About</h4>
-              <p class="mb-0">
-                A blog (short for "weblog") is a regularly updated website or page where an individual or business shares ideas, opinions, and expert advice in a conversational style.
-              </p>
-            </div>
-
-            <div class="p-3">
-              <h4 class="font-italic">Follow Us</h4>
-              <ol class="list-unstyled">
-                <li><a href="#">GitHub</a></li>
-                <li><a href="#">LinkedIn</a></li>
-              </ol>
-            </div>
-          </aside>
-          <!-- /.blog-sidebar -->
-        </div>
-        <!-- /.row -->
-      </main>
+      
       <!-- /.container -->
     </div>
     <footer class="blog-footer">
