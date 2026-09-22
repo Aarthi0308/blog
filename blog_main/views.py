@@ -1,11 +1,11 @@
 from django.shortcuts import render
 from blogs.models import category,blog
 def home(request):
-    categories=category.objects.all()
+    
     featured_posts=blog.objects.filter(is_featured=True, status='published').order_by('updated_at')
     posts=blog.objects.filter(is_featured=False,status='published')
     context= {
-     'categories':categories,  
+     
      'featured_posts':featured_posts,
      'posts':posts
     }
