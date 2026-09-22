@@ -30,6 +30,7 @@ def blogs(request,slug):
       }
       return render(request,'blogs.html',context)
 
+
 def search (request):
    keyword= request.GET.get('keyword')
    print('keyword==',keyword)
